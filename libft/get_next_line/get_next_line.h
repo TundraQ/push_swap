@@ -16,6 +16,10 @@
 # include <unistd.h>
 # include <limits.h>
 
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
+# endif
+
 char	*get_next_line(int fd);
 int		end_line(const char *buf);
 char	*get_before(const char *buf);

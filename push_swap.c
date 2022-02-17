@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ec_malloc.c                                     :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 17:10:26 by azane             #+#    #+#             */
-/*   Updated: 2022/02/17 17:10:43 by azane            ###   ########.fr       */
+/*   Created: 2022/02/17 17:28:47 by azane             #+#    #+#             */
+/*   Updated: 2022/02/17 18:21:48 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	*ft_ec_malloc(unsigned int size)
+int	*ft_check_argc(int argc, char **argv);
 {
-	void	*ptr;
+	int	i;
+	int	k;
+	int	*elements;
 
-	ptr = malloc(size);
-	if (ptr == NULL)
-		ft_fatal("in function malloc() while allocating memory");
-	return (ptr);
+	i = 1;
+	while (i <= argc)
+	{
+		i++;
+	}
+}
+
+int		main(int argc, char **argv)
+{
+	int	*sorted_elem;
+
+	if (argc <= 1)
+		ft_fatal("no arguments");
+	sorted_elem = ft_check_argc(argc, argv);
+	sorted_elem = qsort(sorted_elem);
 }

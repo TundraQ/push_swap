@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ec_malloc.c                                     :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 17:10:26 by azane             #+#    #+#             */
-/*   Updated: 2022/02/17 17:10:43 by azane            ###   ########.fr       */
+/*   Created: 2022/02/17 17:24:55 by azane             #+#    #+#             */
+/*   Updated: 2022/02/17 17:26:32 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+# include "libft/libft.h"
 
-void	*ft_ec_malloc(unsigned int size)
-{
-	void	*ptr;
-
-	ptr = malloc(size);
-	if (ptr == NULL)
-		ft_fatal("in function malloc() while allocating memory");
-	return (ptr);
-}
+#endif
