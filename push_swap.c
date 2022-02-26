@@ -3,34 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azane <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 17:28:47 by azane             #+#    #+#             */
-/*   Updated: 2022/02/17 18:21:48 by azane            ###   ########.fr       */
+/*   Created: 2022/02/26 19:49:11 by azane             #+#    #+#             */
+/*   Updated: 2022/02/26 22:24:14 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*ft_check_argc(int argc, char **argv);
+int	ft_find_min(t_stack *a)
 {
-	int	i;
-	int	k;
-	int	*elements;
-
-	i = 1;
-	while (i <= argc)
+	int		min;
+	t_node	*node;
+	
+	min = a->lst.head->data;
+	node = a->lst.head->next;
+	while (node != a->lst.head)
 	{
-		i++;
+		if (min > node->data)
+			min = node->data;
+		node = node->next;
 	}
+	return (min);
 }
 
-int		main(int argc, char **argv)
+int	ft_find_max(t_stack *a)
 {
-	int	*sorted_elem;
+	int		max;
+	t_node	*node;
+	
+	max = a->lst.head->data;
+	node = a->lst.head->next;
+	while (node != a->lst.head)
+	{
+		if (max < node->data)
+			max = node->data;
+		node = node->next;
+	}
+	return (max);
+}
 
-	if (argc <= 1)
-		ft_fatal("no arguments");
-	sorted_elem = ft_check_argc(argc, argv);
-	sorted_elem = qsort(sorted_elem);
+void	ft_starting_position(t_stack *a, t_stack *b)
+{
+	int	min;
+	int	max;
+	
+	min = ft_find_min(a);
+	max = ft_find_max(a);
+	while (a->lst.size > 2)
+	{
+		if (a->lst.head->data == min || a->lst.head->data == max)
+			ft_rotate_up_stack(a);
+		else
+		{
+			ft_push_stack(b, a->lst.head->data);
+			ft_pop_stack(a);
+		}
+	}
 }
