@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 20:28:46 by azane             #+#    #+#             */
-/*   Updated: 2022/02/26 21:32:35 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/02 18:32:09 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ void	ft_print_stack(t_stack *stack)
 	printf("%d\n", node->data);
 }
 
-int main()
+int main(int argc, char *argv[])
 {
 	t_stack	a;
 	t_stack	b;
 
 	ft_init_stack(&a);
 	ft_init_stack(&b);
-	for (int i = 0; i < 20; i++)
-		ft_push_stack(&a, i);
-	ft_starting_position(&a, &b);
+	a.type = 'a';
+	b.type = 'b';
+	for (int i = argc - 1; i > 0; i--)
+		ft_push_stack(&a, ft_atoi(argv[i]));
+	ft_sort_stack(&a, &b);
 	ft_print_stack(&a);
-	printf("-------\n");
-	ft_print_stack(&b);
 	return (0);
 }
