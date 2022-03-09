@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 17:24:55 by azane             #+#    #+#             */
-/*   Updated: 2022/03/02 16:47:06 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/09 00:05:12 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	ft_pop_stack(t_stack *stack);
 void	ft_push_from_to(t_stack *from, t_stack *to);
 void	ft_rotate_up_stack(t_stack *stack);
 void	ft_rotate_down_stack(t_stack *stack);
+void	ft_rotate_stacks(t_stack *a, t_stack *b, char side);
 void	ft_swap_stack(t_stack *stack);
 void	ft_clear_stack(t_stack *stack);
 int		ft_stack_top(t_stack *stack);
@@ -75,5 +76,7 @@ int		ft_find_min(t_stack *stack);
 int		ft_find_max(t_stack *stack);
 void	ft_starting_position(t_stack *a, t_stack *b);
 void	ft_sort_stack(t_stack *a, t_stack *b);
-
+int		ft_find_best_place(t_stack *stack, int num);
+void	ft_push_ab_index(t_stack *a, t_stack *b, int index, int num);
+void	ft_starting_position(t_stack *a, t_stack *b);
 #endif

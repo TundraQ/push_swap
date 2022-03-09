@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 21:33:10 by azane             #+#    #+#             */
-/*   Updated: 2022/03/02 17:08:56 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/09 18:53:27 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_find_best_place(t_stack *stack, int num)
 	int					i;
 	t_stack_iterator	it[3];
 
-	if (num > ft_find_max(stack) || num < ft_find_min(stack))
+	if (num > ft_find_max(stack) || num < ft_find_min(stack))      
 		return (ft_get_min_index(stack));
 	i = 1;
 	it[0] = ft_stack_begin(stack);
@@ -64,53 +64,160 @@ int		ft_find_best_place(t_stack *stack, int num)
 	return (-1);
 }
 
+static int ft_max(int a, int b)
+{
+	if (a > b)
+		return a;
+	return b;
+}
+
+static int ft_min(int a, int b)
+{
+	if (a < b)
+		return a;
+	return b;
+}
+
 int		ft_min_oper_for_elem(t_stack *a, t_stack *b, int index, int num) // take into account rr
 {
-	int	count;
-	int	best_place_index;
+	int		count;
+	int		best_place_index;
+	char	stack_a;
+	char	stack_b;
 
+	stack_a = 'u';
 	count = index;
 	if (index >= ft_stack_size(b) / 2)
+	{
 		count = ft_stack_size(b) - index;
+		stack_a = 'd';	
+	}
 	best_place_index = ft_find_best_place(a, num);
+	stack_b = 'u';
 	if (best_place_index >= ft_stack_size(a) / 2)
-		count += ft_stack_size(a) - best_place_index;
-	else
-		count += best_place_index;
-	return (count);
+	{
+		//count += ft_stack_size(a) - best_place_index;
+		best_place_index = ft_stack_size(a) - best_place_index;
+		stack_b = 'd';
+	}
+	if (stack_a == stack_b)
+		return ft_max(count, best_place_index);
+	return (count + best_place_index);
 }
 
 void	ft_push_ab_index(t_stack *a, t_stack *b, int index, int num) // take into account rr
 {
-	int	count;
-	int	best_place_index;
+	int		count;
+	int		best_place_index;
+	char	stack_a;
+	char	stack_b;
 
+	stack_b = 'u';
 	count = index;
 	if (index >= ft_stack_size(b) / 2)
 	{
 		count = ft_stack_size(b) - index;
-		while (count--)
-			ft_rotate_down_stack(b);
-	}
-	else
-	{
-		while (count--)
-			ft_rotate_up_stack(b);
+		stack_b = 'd';	
 	}
 	best_place_index = ft_find_best_place(a, num);
+	stack_a = 'u';
 	if (best_place_index >= ft_stack_size(a) / 2)
 	{
+		//count += ft_stack_size(a) - best_place_index;
 		best_place_index = ft_stack_size(a) - best_place_index;
-		while (best_place_index--)
-			ft_rotate_down_stack(a);
+		stack_a = 'd';
 	}
+	if (stack_a == stack_b)
+	{
+		int tmp = ft_min(count, best_place_index);
+		for (int i = 0; i < tmp; ++i)
+			ft_rotate_stacks(a, b, stack_a);
+		if (count > tmp)
+		{
+			if (stack_a == 'u')
+			{
+				for (int i = 0; i < count - tmp; ++i)
+					ft_rotate_up_stack(b);
+			}
+			else
+			{
+				for (int i = 0; i < count - tmp; ++i)
+					ft_rotate_down_stack(b);
+			}
+		}
+		else
+		{
+			if (stack_a == 'u')
+			{
+				for (int i = 0; i < best_place_index - tmp; ++i)
+					ft_rotate_up_stack(a);
+			}
+			else
+			{
+				for (int i = 0; i < best_place_index - tmp; ++i)
+					ft_rotate_down_stack(a);
+			}
+		}
+	}		
 	else
 	{
-		while (best_place_index--)
-			ft_rotate_up_stack(a);
+		if (stack_b == 'u')
+		{
+			for (int i = 0; i < count; ++i)
+				ft_rotate_up_stack(b);
+		}
+		else
+		{
+			for (int i = 0; i < count; ++i)
+				ft_rotate_down_stack(b);
+		}
+		if (stack_a == 'u')
+		{
+			for (int i = 0; i < best_place_index; ++i)
+				ft_rotate_up_stack(a);
+		}
+		else
+		{
+			for (int i = 0; i < best_place_index; ++i)
+				ft_rotate_down_stack(a);
+		}
 	}
 	ft_push_from_to(b, a);
 }
+
+// void	ft_push_ab_index(t_stack *a, t_stack *b, int index, int num) // take into account rr
+// {
+// 	int		count;
+// 	int		best_place_index;
+// 	char	stack_a;
+// 	char	stack_b;
+
+// 	count = index;
+// 	if (index >= ft_stack_size(b) / 2)
+// 	{
+// 		count = ft_stack_size(b) - index;
+// 		while (count--)
+// 			ft_rotate_down_stack(b);
+// 	}
+// 	else
+// 	{
+// 		while (count--)
+// 			ft_rotate_up_stack(b);
+// 	}
+// 	best_place_index = ft_find_best_place(a, num);
+// 	if (best_place_index >= ft_stack_size(a) / 2)
+// 	{
+// 		best_place_index = ft_stack_size(a) - best_place_index;
+// 		while (best_place_index--)
+// 			ft_rotate_down_stack(a);
+// 	}
+// 	else
+// 	{
+// 		while (best_place_index--)
+// 			ft_rotate_up_stack(a);
+// 	}
+// 	ft_push_from_to(b, a);
+// }
 
 void	ft_end(t_stack *a)
 {
@@ -157,7 +264,7 @@ void	ft_sort_stack(t_stack *a, t_stack *b)
 			ft_stiter_next(&it);
 			index++;
 		}
-		ft_push_ab_index(a, b, index, num);
+		ft_push_ab_index(a, b, index_of_best, num);
 	}
 	ft_end(a);
 }

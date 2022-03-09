@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 20:28:46 by azane             #+#    #+#             */
-/*   Updated: 2022/03/02 18:32:09 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/09 18:52:17 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int main(int argc, char *argv[])
 	t_stack	a;
 	t_stack	b;
 
+	(void) argc;
+	(void) argv;
 	ft_init_stack(&a);
 	ft_init_stack(&b);
 	a.type = 'a';
@@ -39,6 +41,4 @@ int main(int argc, char *argv[])
 	for (int i = argc - 1; i > 0; i--)
 		ft_push_stack(&a, ft_atoi(argv[i]));
 	ft_sort_stack(&a, &b);
-	ft_print_stack(&a);
-	return (0);
 }

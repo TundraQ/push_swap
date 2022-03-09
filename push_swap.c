@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 19:49:11 by azane             #+#    #+#             */
-/*   Updated: 2022/03/02 17:00:56 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/09 00:05:43 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,4 @@ int	ft_find_max(t_stack *a)
 		ft_stiter_next(&it);
 	}
 	return (max);
-}
-
-void	ft_starting_position(t_stack *a, t_stack *b)
-{
-	int	min;
-	int	max;
-
-	min = ft_find_min(a);
-	max = ft_find_max(a);
-	while (ft_stack_size(a) > 2)
-	{
-		if (ft_stack_top(a) == min || ft_stack_top(a) == max)
-			ft_rotate_up_stack(a);
-		else
-			ft_push_from_to(a, b);
-	}
 }

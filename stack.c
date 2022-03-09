@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 20:37:52 by azane             #+#    #+#             */
-/*   Updated: 2022/03/02 17:03:32 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/09 00:08:23 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,26 @@ int		ft_stack_top(t_stack *stack)
 int		ft_stack_size(t_stack *stack)
 {
 	return (stack->lst.size);
+}
+
+void	ft_rotate_stacks(t_stack *a, t_stack *b, char side)
+{
+	if (side == 'u')
+	{
+		if (a->lst.head)
+			ft_rotate_up_list(&a->lst);
+		if (b->lst.head)
+			ft_rotate_up_list(&b->lst);
+		ft_printf("rr\n");
+	}
+	else
+	{
+		if (a->lst.head)
+			ft_rotate_down_list(&a->lst);
+		if (b->lst.head)
+			ft_rotate_down_list(&b->lst);
+		ft_printf("rrr\n");
+	}
 }
 
 void	ft_push_from_to(t_stack *from, t_stack *to)

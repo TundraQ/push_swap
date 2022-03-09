@@ -1,7 +1,8 @@
 NAME = push_swap
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-SRC_FILES = push_swap.c dblist.c main.c stack.c ft_stack_iterator.c sort_stacks.c
+SRC_FILES = push_swap.c dblist.c main.c stack.c \
+			ft_stack_iterator.c sort_stacks.c starting_position.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
 HEADER = push_swap.h
 RM = rm -rf
