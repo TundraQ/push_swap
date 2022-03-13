@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dblist.c                                           :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/26 19:49:36 by azane             #+#    #+#             */
-/*   Updated: 2022/02/26 20:35:04 by azane            ###   ########.fr       */
+/*   Created: 2022/03/13 04:14:13 by azane             #+#    #+#             */
+/*   Updated: 2022/03/13 04:16:53 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,10 @@ void	ft_pop_front_list(t_dblist *lst)
 
 void	ft_rotate_up_list(t_dblist *lst)
 {
-	lst->head = lst->head->next;	
+	lst->head = lst->head->next;
 }
 
 void	ft_rotate_down_list(t_dblist *lst)
 {
 	lst->head = lst->head->prev;
-}
-
-void	ft_swap_list(t_dblist *lst)
-{
-	int	tmp;
-	
-	tmp = lst->head->data;
-	lst->head->data = lst->head->next->data;
-	lst->head->next->data = tmp;
-}
-
-void	ft_clear_list(t_dblist *lst)
-{
-	while (lst->head)
-		ft_pop_front_list(lst);
 }

@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   tools4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/26 20:37:52 by azane             #+#    #+#             */
-/*   Updated: 2022/03/09 00:08:23 by azane            ###   ########.fr       */
+/*   Created: 2022/03/13 04:23:47 by azane             #+#    #+#             */
+/*   Updated: 2022/03/13 04:27:06 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_init_stack(t_stack *stack)
-{
-	ft_init_list(&stack->lst);
-}
-
-void	ft_push_stack(t_stack *stack, int num)
-{
-	ft_push_front_list(&stack->lst, num);
-}
-
-void	ft_pop_stack(t_stack *stack)
-{
-	if (stack->lst.head)	
-		ft_pop_front_list(&stack->lst);
-}
 
 void	ft_rotate_up_stack(t_stack *stack)
 {
@@ -40,7 +24,7 @@ void	ft_rotate_up_stack(t_stack *stack)
 
 void	ft_rotate_down_stack(t_stack *stack)
 {
-	if (stack->lst.head)	
+	if (stack->lst.head)
 		ft_rotate_down_list(&stack->lst);
 	if (stack->type == 'a')
 		ft_printf("rra\n");
@@ -56,21 +40,6 @@ void	ft_swap_stack(t_stack *stack)
 		ft_printf("sa\n");
 	if (stack->type == 'b')
 		ft_printf("sb\n");
-}
-
-void	ft_clear_stack(t_stack *stack)
-{
-	ft_clear_list(&stack->lst);
-}
-
-int		ft_stack_top(t_stack *stack)
-{
-	return (stack->lst.head->data);
-}
-
-int		ft_stack_size(t_stack *stack)
-{
-	return (stack->lst.size);
 }
 
 void	ft_rotate_stacks(t_stack *a, t_stack *b, char side)

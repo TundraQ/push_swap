@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fatal.c                                         :+:      :+:    :+:   */
+/*   tools5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 17:10:07 by azane             #+#    #+#             */
-/*   Updated: 2022/03/12 18:07:34 by azane            ###   ########.fr       */
+/*   Created: 2022/03/13 04:27:20 by azane             #+#    #+#             */
+/*   Updated: 2022/03/13 04:28:32 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_fatal(char *message)
+void	ft_clear_stack(t_stack *stack)
 {
-	char	error_message[100];
+	ft_clear_list(&stack->lst);
+}
 
-	ft_strlcpy(error_message, "Error", 100);
-	ft_strlcat(error_message, message, 100);
-	ft_printf("%s\n", error_message);
-	exit(0);
+int	ft_stack_top(t_stack *stack)
+{
+	return (stack->lst.head->data);
+}
+
+int	ft_stack_size(t_stack *stack)
+{
+	return (stack->lst.size);
 }
