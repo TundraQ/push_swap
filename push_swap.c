@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 03:02:17 by azane             #+#    #+#             */
-/*   Updated: 2022/03/13 07:12:38 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/14 20:08:55 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,32 +78,6 @@ void	ft_sort_stack(t_stack *a, t_stack *b)
 	ft_end(a);
 }
 
-int	ft_check_arg(char *argv)
-{
-	long long	i;
-
-	i = 0;
-	while (argv[i])
-	{
-		if (!ft_isdigit(argv[i]))
-		{
-			if (i == 0 && argv[i] == '-')
-			{
-				i++;
-				continue ;
-			}
-			ft_fatal("");
-		}
-		i++;
-	}
-	if (ft_strlen(argv) > 11)
-		ft_fatal("");
-	i = ft_atoi(argv);
-	if (i > 2147483647 || i < -2147483647)
-		ft_fatal("");
-	return ((int) i);
-}
-
 int	main(int argc, char *argv[])
 {
 	t_stack	a;
@@ -113,10 +87,8 @@ int	main(int argc, char *argv[])
 
 	if (argc == 1)
 		return (0);
-	ft_init_stack(&a);
-	ft_init_stack(&b);
-	a.type = 'a';
-	b.type = 'b';
+	ft_init_stack(&a, 'a');
+	ft_init_stack(&b, 'b');
 	i = 1;
 	while (i <= argc - 2)
 	{

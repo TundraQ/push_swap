@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 04:20:05 by azane             #+#    #+#             */
-/*   Updated: 2022/03/13 04:23:26 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/14 19:50:12 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ t_stack_iterator	ft_stack_end(t_stack *stack)
 	return (tmp);
 }
 
-void	ft_init_stack(t_stack *stack)
+void	ft_init_stack(t_stack *stack, char name)
 {
 	ft_init_list(&stack->lst);
+	stack->type = name;
 }
 
 void	ft_push_stack(t_stack *stack, int num)

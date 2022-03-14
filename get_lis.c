@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 05:56:45 by azane             #+#    #+#             */
-/*   Updated: 2022/03/13 06:55:21 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/14 20:20:05 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	ft_get_lis3(t_stack *stack, int *size, t_norm *norm)
 	}
 }
 
-static int	*ft_get_lis(t_stack *stack, int *size)
+int	*ft_get_lis(t_stack *stack, int *size)
 {
 	t_norm	norm;
 
@@ -98,28 +98,28 @@ static int	*ft_get_lis(t_stack *stack, int *size)
 int	*ft_get_best_lis(t_stack *stack, int *size)
 {
 	int	i;
-	int	cur_size;
 	int	**lis;
-	int	lis_num;
+	int	*res;
+	int	tmp[2];
 
 	lis = malloc(sizeof(int *) * ft_stack_size(stack));
-	i = 0;
-	*size = INT_MIN;
-	while (i < ft_stack_size(stack) - 1)
+	i = -1;
+	while (++i < ft_stack_size(stack) - 1)
 	{
 		ft_rotate_up_list(&stack->lst);
-		lis[i] = ft_get_lis(stack, &cur_size);
-		if (cur_size > *size)
+		lis[i] = ft_get_lis(stack, &tmp[0]);
+		if (tmp[0] > *size)
 		{
-			*size = cur_size;
-			lis_num = i;
+			*size = tmp[0];
+			tmp[1] = i;
 		}
-		i++;
 	}
 	ft_rotate_up_list(&stack->lst);
 	i = 0;
 	while (i < ft_stack_size(stack) - 1)
-		if (i++ != lis_num)
+		if (i++ != tmp[1])
 			free(lis[i - 1]);
-	return (lis[lis_num]);
+	res = lis[tmp[1]];
+	free(lis);
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 04:17:14 by azane             #+#    #+#             */
-/*   Updated: 2022/03/13 04:19:51 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/14 19:07:00 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	ft_clear_list(t_dblist *lst)
 
 void	ft_stiter_next(t_stack_iterator *it)
 {
+	if (it->node == 0)
+		return ;
 	if (it->node == it->head->prev)
 		it->node = 0;
 	else

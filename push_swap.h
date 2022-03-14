@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 17:24:55 by azane             #+#    #+#             */
-/*   Updated: 2022/03/13 06:55:59 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/14 20:11:52 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_stack_iterator	ft_stack_begin(t_stack *stack);
 t_stack_iterator	ft_stack_end(t_stack *stack);
 
 int					ft_get_min_index(t_stack *stack);
-void				ft_init_stack(t_stack *stack);
+void				ft_init_stack(t_stack *stack, char name);
 void				ft_push_stack(t_stack *stack, int num);
 void				ft_pop_stack(t_stack *stack);
 void				ft_push_from_to(t_stack *from, t_stack *to);
@@ -89,6 +89,8 @@ int					ft_optimize_top_bigger(t_stack *stack);
 void				ft_sort_top_bigger(t_stack *main,
 						t_stack *_help, int count);
 
+int					*ft_get_lis(t_stack *stack, int *size);
+int					ft_check_arg(char *argv);
 int					*ft_get_best_lis(t_stack *stack, int *size);
 int					ft_sort_5elem(t_stack *a, t_stack *b);
 int					ft_find_min(t_stack *stack);

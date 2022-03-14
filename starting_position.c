@@ -6,7 +6,7 @@
 /*   By: azane <azane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 05:23:36 by azane             #+#    #+#             */
-/*   Updated: 2022/03/13 06:03:49 by azane            ###   ########.fr       */
+/*   Updated: 2022/03/14 20:19:28 by azane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	ft_starting_position(t_stack *a, t_stack *b)
 	int	*lis;
 	int	size;
 
+	size = INT_MIN;
 	lis = ft_get_best_lis(a, &size);
 	while (ft_stack_size(a) != size)
 	{
